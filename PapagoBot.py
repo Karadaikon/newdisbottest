@@ -4,6 +4,7 @@
 #Papago API Reference : https://developers.naver.com/docs/nmt/reference/
 
 import discord
+import os
 from asyncio import *
 from discord.ext import commands
 from urllib.error import HTTPError, URLError
@@ -12,7 +13,8 @@ from papagoRequestClass import dataProcessStream
 
 
 #discord bot tokken
-token = 'ODU0NzY0OTA2MzMwMzI1MDYy.YMor2g.yzjdRjWlkKK7ZExLk_W2prx-wqw'
+access_token = os.environ["BOT_TOKEN"]
+
 
 
 # stream Instane
@@ -124,4 +126,4 @@ async def on_message(message): # on_message() event : when the bot has recieved 
                 await message.channel.send("Translate complete", embed=embedInstance)
         except HTTPError as e:
             await message.channel.send("Translate Failed. HTTPError Occured.")
-client.run("ODU0NzY0OTA2MzMwMzI1MDYy.YMor2g.yzjdRjWlkKK7ZExLk_W2prx-wqw")
+client.run(access_token)
